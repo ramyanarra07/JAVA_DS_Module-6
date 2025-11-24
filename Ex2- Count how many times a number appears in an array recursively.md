@@ -1,59 +1,73 @@
-# EX 1 You’re creating a health monitoring device which stores several sensor readings in an array. To determine the minimum value (e.g., lowest heartbeat), implement a recursive method.
-## DATE:06/08/2025
+# Ex2 Count how many times a number appears in an array recursively.
+## DATE:08/08/2025
 ## AIM:
-To write a JAVA program To determine the minimum value (e.g., lowest heartbeat), implement a recursive method.
+To write a Java program to Count how many times a number appears in an array recursively.
 
 ## Algorithm
+1.Read the array size, array elements, and the target value.
 
-1. Read `n` and the array elements.
-2. Call `getMin(arr, 0, n)`.
-3. If `i` is the last index, return `arr[i]`.
-4. Recursively get the minimum of the rest of the array.
-5. Return the smaller value between `arr[i]` and the recursive result.
- 
+2.Call the recursive function countOccurrences(arr, n, target).
+
+3.If n becomes 0, return 0 (no elements left).
+
+4.Otherwise, check if the last element arr[n-1] equals the target.
+
+5.Return 1 + recursive call if it matches, else return just the recursive call.  
 
 ## Program:
 ```
 /*
-Program To determine the minimum value (e.g., lowest heartbeat), implement a recursive method.
-Developed by: MOPURI ANKITHA
-RegisterNumber: 212223040117
-import java.util.*;
+Program Count how many times a number appears in an array recursively.
+Developed by: NARRA RAMYA
+RegisterNumber: 212223040128
 
-public class Main {
-    static int getMin(int[] arr, int i, int n) 
-    {
-        if(i==n-1){
-            return arr[i];
+import java.util.Scanner;
+
+public class CountOccurrences {
+
+   
+    public static int countOccurrences(int[] arr, int n, int target) {
+        if (n == 0) {
+            return 0;
+        } 
+        else {
+            if (arr[n - 1] == target) {
+                return 1 + countOccurrences(arr, n - 1, target);
+            } 
+            else {
+                return countOccurrences(arr, n - 1, target);
+            }
         }
-        int minRest = getMin(arr, i + 1, n);
-
-    if (arr[i] < minRest) {
-        return arr[i];  
-    } else {
-        return minRest; 
-    }
-        
-    }
+ }
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[] arr = new int[n];
-        for(int i=0; i<n; i++) {
-            arr[i] = sc.nextInt();
+        Scanner scanner = new Scanner(System.in);
+        int size = scanner.nextInt();
+
+        if (size <= 0) {
+            System.out.println("Invalid array size. Must be positive.");
+            return;
         }
-        System.out.println(getMin(arr, 0, n));
+        int[] arr = new int[size];
+        for (int i = 0; i < size; i++) {
+            arr[i] = scanner.nextInt();
+        }
+        int target = scanner.nextInt();
+        int count = countOccurrences(arr, size, target);
+        System.out.println("The number " + target + " appears " + count + " time(s) in the array.");
+
+        scanner.close();
     }
 }
-
+  
 */
 ```
 
 ## Output:
-<img width="527" height="199" alt="image" src="https://github.com/user-attachments/assets/71d26a19-591b-412b-99d7-a087d122e72a" />
+<img width="917" height="570" alt="image" src="https://github.com/user-attachments/assets/448f9349-febe-40f8-8cad-46ff1c0ed2d6" />
+
 
 
 
 ## Result:
-Thus the JAVA prograM ti find the minimum value (e.g., lowest heartbeat), implement a recursive method has implemented successfully
+Thus, the Java program to Count how many times a number appears in an array recursively is implemented successfully.
